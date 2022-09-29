@@ -1,0 +1,36 @@
+{% extends "template_dashboard.html" %}
+
+{% block title %} Asesores registrados {% endblock %}
+    
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Formulario edicion registro -->
+<section class="mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                <h2 class=" mt-4 titulo-form-registro text-center">Registra los datos del nuevo asesor</h2>
+                <!-- Formulario registro asesores -->
+                    <div class="col-12 col-md-6 offset-md-3 pt-5">
+                        <form action="" method="POST" class="container-form-registro needs-validation mb-5" novalidate>
+                            {% csrf_token %}
+                            <!-- <div class="row"> -->
+                            {{ form | crispy }}
+                                
+                            <div class="d-grid boton-formulario-registro">
+                                <!-- <a class="btn btn-primary btn-lg mt-4" href="edicion_asesor/{{asesor.id}}" type="submit">Confirmar</a> -->
+                                <button class="btn btn-primary btn-lg" type="submit">Confirmar</button>
+                                <button type="button" class="btn btn btn-outline-secondary mt-4 mb-4 btn-lg" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>                  
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Cierre Formulario edicion registro -->
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "template_dashboard.html" %}
+
+{% block title %} Comisiónes Asesores {% endblock %}
+    
+{% block content %}
+
+<!-- Formulario registro comisiones -->
+<section class="mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                    <h2 class=" mt-4 titulo-form-registro text-center">Registro de comisiones</h2>
+                <div class="col-12 col-md-6 offset-md-3 pt-5">
+                    <form action="{% url 'registro_comision' %}" required method="POST" id="formulario-de-registro-asesores" class="container-form-registro needs-validation mb-5" novalidate>
+                        {% csrf_token %}  
+                        
+                        {{form}}
+                                            
+                        <div class="d-grid boton-formulario-registro">
+                            <button class="btn btn-primary btn-lg mt-4" type="submit">Registrar comisión</button>
+                            <a  href="{% url 'comisiones' %}" asp-action="Listar" asp-controller="Dashboard" class="btn btn-outline-secondary btn-lg mt-2 mb-5 btn-ver-lista-de-asesores">Ver registro de comisiones</a>
+                        </div>                                                                 
+                    </form>
+                </div>
+            </div>                  
+        </div>
+    </div>
+</section>
+<!-- Cierre Formulario registro de comisiónes -->
+{% endblock %}
+

@@ -1,0 +1,214 @@
+{% extends "template_dashboard.html" %}
+
+{% block title %} Asesores registrados {% endblock %}
+    
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12 pt-5">
+                <button class="btn btn-primary mb-3" type="submit" data-bs-toggle="modal" data-bs-target="#contenedor-modal-registro-asesor"><i class="fa-solid fa-user-plus"><a style="font-family: montserrat"> Registrar asesor</a></i></button>
+                <table class="table">                   
+                    <tbody>                       
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Celular</th>
+                                <th scope="col">Correo</th>
+                                <!-- <th scope="col">Porcentaje comisión</th> -->
+                                <th scope="col">Estado</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        {% for Asesor in asesores %}
+                        <tr>
+                            <!-- <th scope="row">{{Asesor.id}}</th> -->
+                            <td><b>{{forloop.counter}}</b></td>
+                            <td>{{Asesor.first_name}}</td>
+                            <td>{{Asesor.last_name}}</td>
+                            <td>{{Asesor.phone}}</td>
+                            <td>{{Asesor.email}}</td>
+                            <!-- <td>{{Asesor.commission}}</td> -->
+                            <td>{{Asesor.advisory_status}}</td>                        
+                            <!-- <td><a class="icono-editar-asesor" href="modificar_asesor/{{ Asesor.id }}"><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#contenedor-modal-editar-asesor{{ Asesor.id }}"></i></a></td> -->
+                            <td><a class="icono-editar-asesor" href="#"><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#contenedor-modal-editar-asesor{{ Asesor.id }}"></i></a></td>
+                            <td><a class="icono-eliminar-asesor" href="#"><i class="fa-solid fa-trash-can" data-bs-toggle="modal" data-bs-target="#contenedor-modal-eliminar-asesor{{ Asesor.id }}"></i></a></td>
+                        </tr>
+                        {% empty %}
+                        <div class="col-12 col-md-6 offset-md-3 pt-5">
+                            <h2 class="mb-5">¡Aun no hay asesores registrados!</h2>
+                        </div>
+                        {% endfor %}            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contenido Modal Formulario para registro de asesores -->
+<div class="modal fade" id="contenedor-modal-registro-asesor" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aquí puedes registrar los datos de los asesores</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'nuevo_asesor' %}" method="POST" id="formulario-de-registro-asesores-modal" class="container-form-registro needs-validation p-5" novalidate>
+                    {% csrf_token %}
+                    <!-- <div class="row"> -->
+                    <div class="row">
+                        <div class="md-4 input-group-lg mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input name="first_name" type="text" class="form-control needs-validation" required novalidate id="name" placeholder="Ingresa el nombre">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="name" class="form-label">Apellidos</label>
+                            <input name="last_name" type="text" class="form-control needs-validation" required novalidate id="name" placeholder="Ingresa el apellido">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Celular</label>
+                            <input name="phone" type="text" class="form-control needs-validation" required id="lastname" placeholder="Ingresa el numero de celular">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+            
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="inputEmail" class="form-label">Correo</label>
+                            <input name="email" type="email" class="form-control needs-validation" required id="inputEmail" placeholder="Ingresa el correo electronico">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <!-- <div class="md-3 input-group-lg mb-3">
+                            <label for="name" class="form-label">Tasa de comisión</label>
+                            <input name="commission" type="text" class="form-control needs-validation" required novalidate id="name" placeholder="Ingresa la comisión a pagar a este asesor ">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div> -->
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="disabledSelect" class="form-label">Estado del asesor</label>
+                            <select name="advisory_status" id="disabledSelect" class="form-select">
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div> 
+                        
+                        <div class="d-grid boton-formulario-registro">
+                            <button class="btn btn-primary btn-lg" type="submit">Confirmar</button>
+                            <button type="button" class="btn btn btn-outline-secondary mt-4 btn-lg" data-bs-dismiss="modal">Cancelar</button>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin formulario registro asesores -->
+
+
+<!-- Contenido Modal Formulario para editar asesores -->
+{% for Asesor in asesores %}
+<div class="modal fade" id="contenedor-modal-editar-asesor{{ Asesor.id }}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aquí puedes editar los datos de los asesores</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="editar_asesor/{{Asesor.id}}" method="POST" id="formulario-de-editar-asesores-modal{{ Asesor.id }}" class="container-form-registro needs-validation p-5" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{Asesor.id}}">
+                    <div class="row">
+                        <div class="md-4 input-group-lg mb-3">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input name="first_name" value="{{Asesor.first_name}}" type="text" class="form-control needs-validation" required novalidate id="first_name" placeholder="Ingresa el nombre">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="name" class="form-label">Apellidos</label>
+                            <input name="last_name" value="{{Asesor.last_name}}" type="text" class="form-control needs-validation" required novalidate id="last_name" placeholder="Ingresa el apellido">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Celular</label>
+                            <input name="phone" value="{{Asesor.phone}}" type="text" class="form-control needs-validation" required id="phone" placeholder="Ingresa el numero de celular">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+            
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="inputEmail" class="form-label">Correo</label>
+                            <input name="email" value="{{Asesor.email}}" type="email" class="form-control needs-validation" required id="email" placeholder="Ingresa el correo electronico">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <!-- <div class="md-3 input-group-lg mb-3">
+                            <label for="name" class="form-label">Tasa de comisión</label>
+                            <input name="commission" value="{{Asesor.commission}}"type="text" class="form-control needs-validation" required novalidate id="commission" placeholder="Ingresa la comisión a pagar a este asesor ">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div> -->
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="disabledSelect" class="form-label novalidate">Estado del asesor</label>
+                            <select name="advisory_status" value="{{Asesor.last_name}}" id="advisory_status" class="form-select">
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div> 
+                        
+                        <div class="d-grid boton-formulario-registro">
+                            <!-- <a class="btn btn-primary btn-lg mt-4" href="modificar_asesor/{{Asesor.id}}" type="submit">Confirmar</a> -->
+                            <button class="btn btn-primary btn-lg" type="submit">Confirmar</button>                    
+                            <button type="button" class="btn btn btn-outline-secondary mt-4 btn-lg" data-bs-dismiss="modal">Cancelar</button>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %} 
+<!-- fin formulario editar asesores -->
+
+<!-- Contenido Modal Formulario para eliminar registro de asesores -->
+{% for Asesor in asesores %}
+<div class="modal fade" id="contenedor-modal-eliminar-asesor{{ Asesor.id }}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar registro de asesor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">                
+                <div class="d-grid boton-formulario-registro">
+                    <h5 class="text-center">Si eliminas el registro esta acción no se podra modificar y perderás los datos de contacto del asesor </h5>
+                    <a class="btn btn-primary btn-lg mt-4" href="delete_asesor/{{Asesor.id}}" type="submit">Eliminar registro</a>
+                    <!-- <a class="btn btn-primary btn-lg mt-4" type="submit">Eliminar registro</a>               -->
+                    <button type="button" class="btn btn btn-outline-secondary mt-4 btn-lg" data-bs-dismiss="modal">Cancelar</button>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

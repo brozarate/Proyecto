@@ -1,0 +1,119 @@
+{% extends "template_dashboard.html" %}
+
+{% block title %} Comisiónes Asesores {% endblock %}
+    
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12 pt-5">
+                <button class="btn btn-primary mb-3"><i class="fa-solid fa-chart-simple"><a class="text-decoration-none text-light" href="{% url 'registro_comision' %}" style="font-family: montserrat"> Registrar Comisión</a></i></button>
+                <table class="table">
+                    <tbody>
+                        <thead>
+                            <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Asesor</th>
+                            <th scope="col">Destino</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Tasa comisión</th>
+                            <th scope="col">Comisión</th>
+                            <th scope="col">Estado comisión</th>
+                            <th scope="col">Editar</th>
+                            </tr>
+                        </thead>
+                        {% for Comision in comisiones %}
+                        <tr>
+                            <td><b>{{forloop.counter}}</b></td>
+                            <td>{{Comision.fecha_creacion}}</td>
+                            <td>{{Comision.Asesor}}</td>
+                            <td>{{Comision.get_destino_display}}</td>
+                            <td>{{Comision.total_sale}}</td>
+                            <td>{{Comision.advisory_commission}}</td>
+                            <td>{{Comision.commission_to_pay}}</td>
+                            <td>{{Comision.get_commission_status_display}}</td>
+                            <!-- <td><button type="submit" class="btn btn-sm insignia-de-estado-pendiente" href="#" data-bs-toggle="modal" data-bs-target="#contenedor-modal-editar-comision{{ Comision.id }}">Editar</button></td> -->
+                            <td><a href="{% url 'edicion_comision' Comision.id %}" class="btn btn-sm insignia-de-estado-pendiente">Editar</a></td>                        
+                        </tr>
+                        {% empty %}
+                        <div class="col-12 col-md-6 offset-md-3 pt-5">
+                            <h2 class="mb-5">¡Aun no hay comisiones registrados!</h2>
+                        </div>
+                        {% endfor %}            
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contenido Modal Formulario para editar Comisiones -->
+<!-- {% for Comision in comisiones %}
+<div class="modal fade" id="contenedor-modal-editar-comision{{ Comision.id }}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aquí puedes editar las comisiones</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="edicion_comision/{{Comision.id}}" method="POST" id="formulario-de-editar-asesores-modal{{ Comision.id }}" class="container-form-registro needs-validation p-5" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{Comision.id}}">
+                    <div class="row">
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Asesor</label>
+                            <input readonly name="Asesor" value="{{Comision.Asesor}}" type="text" class="form-control needs-validation" required id="Asesor" placeholder="Nombre asesor">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Destino</label>
+                            <input readonly name="destino" value="{{Comision.get_destino_display}}" type="text" class="form-control needs-validation" required id="destino">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Valor venta</label>
+                            <input name="total_sale" value="{{Comision.total_sale}}" type="text" class="form-control needs-validation" required id="total_sale" placeholder="Ingresa el valor de la venta">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Comisión</label>
+                            <input readonly name="advisory_commission" value="{{Comision.advisory_commission}}" type="text" class="form-control needs-validation" required id="advisory_commission" placeholder="Ingresa el valor de la venta">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+            
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Comisión a pagar</label>
+                            <input readonly name="commission_to_pay" value="{{Comision.commission_to_pay}}" type="text" class="form-control needs-validation" required id="commission_to_pay" placeholder="Ingresa el valor de la venta">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+
+                        <div class="md-3 input-group-lg mb-3">
+                            <label for="lastname" class="form-label">Estado de la comisión</label>
+                            <input name="commission_status" value="{{Comision.get_commission_status_display}}" type="text" class="form-control needs-validation" required id="commission_status" placeholder="Ingresa el valor de la venta">
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback">Completa los datos</div>
+                        </div>                            
+                        <div class="d-grid boton-formulario-registro">
+                            <button class="btn btn-primary btn-lg" type="submit">Confirmar</button>                    
+                            <button type="button" class="btn btn btn-outline-secondary mt-4 btn-lg" data-bs-dismiss="modal">Cancelar</button>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}  -->
+<!-- fin formulario editar comisiones -->
+{% endblock %}

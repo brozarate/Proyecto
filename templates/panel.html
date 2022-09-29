@@ -1,0 +1,116 @@
+{% extends "template_dashboard.html" %}
+
+{% block title %} Panel {% endblock %}
+    
+{% block content %}
+    <section>
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3 borde-card p-3 d-flex">
+                <div class="m-auto">
+                  <h4 class="text-muted">Comisiones por pagar</h4>
+                  <h3 class="font-weight-bold">$3.800.000</h3>
+                  <h5 class="text-success">48.7%</h5>
+                </div>
+              </div>
+              <div class="col-lg-3 borde-card p-3 d-flex">
+                <div class="m-auto">
+                  <h4 class="text-muted">Comisiones pagadas</h4>
+                  <h3 class="font-weight-bold">$10.800.000</h3>
+                  <h5 class="text-success">15.4%</h5>
+                </div>
+              </div>
+              <div class="col-lg-3 borde-card p-3 d-flex">
+                <div class="m-auto">
+                  <h4 class="text-muted">No. de asesores</h4>
+                  <h3 class="font-weight-bold">70</h3>
+                  <h5 class="text-success">53.5%</h5>
+                </div>
+              </div>
+              <div class="col-lg-3 p-3 d-flex">
+                <div class="m-auto">
+                  <h4 class="text-muted">Asesores nuevos</h4>
+                  <h3 class="font-weight-bold">20</h3>
+                  <h5 class="text-success">70.7%</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Cierre sección comisiones panel -->
+    <!-- Formulario registro -->
+    <section class="mt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div>
+              <h2 class=" mt-4 titulo-form-registro text-center">Registra los datos del nuevo asesor</h2>
+              <!-- Formulario registro asesores -->
+                <div class="col-12 col-md-6 offset-md-3 pt-5">
+                  <form action="{% url 'nuevo_asesor' %}" method="POST" id="formulario-de-registro-asesores" class="container-form-registro needs-validation mb-5" novalidate>
+                    {% csrf_token %}
+                    <!-- <div class="row"> -->
+                      <div class="row">
+                        <div class="md-3 input-group-lg mb-3">
+                          <label for="name" class="form-label">Nombre</label>
+                          <input name="first_name" type="text" class="form-control needs-validation" required novalidate id="name" placeholder="Ingresa el nombre">
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+                        <div class="md-3 input-group-lg mb-3">
+                          <label for="name" class="form-label">Apellidos</label>
+                          <input name="last_name" type="text" class="form-control needs-validation" required novalidate id="name" placeholder="Ingresa el apellido">
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+                        <div class="md-3 input-group-lg mb-3">
+                          <label for="lastname" class="form-label">Celular</label>
+                          <input name="phone" type="text" class="form-control needs-validation" required id="lastname" placeholder="Ingresa el numero de celular">
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Completa los datos</div>
+                        </div>            
+                        <div class="md-3 input-group-lg mb-3">
+                          <label for="inputEmail" class="form-label">Correo</label>
+                          <input name="email" type="email" class="form-control needs-validation" required id="inputEmail" placeholder="Ingresa el correo electronico">
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Completa los datos</div>
+                        </div>
+                        <!-- <div class="md-3 input-group-lg mb-3">
+                          <label for="name" class="form-label">Tasa de comisión</label>
+                          <input name="commission" type="text" class="form-control needs-validation" required novalidate id="name" placeholder="Ingresa la comisión a pagar a este asesor ">
+                          <div class="valid-feedback"></div>
+                          <div class="invalid-feedback">Completa los datos</div>
+                        </div> -->
+                        <div class="md-3 input-group-lg mb-3">
+                          <label for="disabledSelect" class="form-label">Estado del asesor</label>
+                          <select name="advisory_status" id="disabledSelect" class="form-select">
+                              <option value="Activo">Activo</option>
+                              <option value="Inactivo">Inactivo</option>
+                          </select>
+                        </div>                       
+                        <div class="d-grid boton-formulario-registro">
+                          <button class="btn btn-primary btn-lg" type="submit">Registrar Asesor</button>
+                          <a  href="{% url 'asesores' %}" asp-action="Listar" asp-controller="Dashboard" class="btn btn-outline-secondary btn-lg mt-2 mb-5 btn-ver-lista-de-asesores">Ver lista de asesores</a>
+                        </div>                       
+                      </div>
+                  </form>
+                </div>
+            </div>                  
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Cierre Formulari oregistro -->
+{% endblock %}
+
+
+
+
+
+
+
+

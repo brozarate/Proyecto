@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+  <script src="https://kit.fontawesome.com/9b15b98184.js" crossorigin="anonymous"></script>
+  <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+  <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <!-- Estructura Sidebar -->
+    <div class="d-flex">
+        <div id="sidebar-container" class="bg-primary">
+          <div class="logo">
+            <img src="{% static 'images/Logo-blanco-Terratur-20-80.png' %}" alt="">
+          </div>
+          <div class="menu">
+            <a href="{% url 'panel' %}" class="d-block text-light p-3 text-decoration-none"><i class="fas fa-border-all m-2 lead"></i>Panel</a>
+            <a href="{% url 'asesores' %}" class="d-block text-light p-3 text-decoration-none"><i class="fas fa-users m-2 lead"></i>Asesores</a>
+            <a href="{% url 'comisiones' %}" class="d-block text-light p-3 text-decoration-none"><i class="fas fa-funnel-dollar m-2 lead"></i>Comisiones</a>
+            <a href="{% url 'logout' %}" class="d-block text-light p-3 text-decoration-none"><i class="fas fa-user-circle m-2 lead"></i>Cerrar sesión</a>
+            <!-- <a href="#" class="d-block text-light p-3 text-decoration-none"><i class="fas fa-tools m-2 lead"></i>Configuración</a> -->
+          </div>
+        </div>     
+        <!-- Estructura Navbar -->
+        <div class="w-100">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="{% static '/images/Brodward Muñoz Zarate.jpg' %}" class="img-fluid rounded-circle m-2 foto-perfil" alt="">
+                      Brodward Muñoz
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="{% url 'panel' %}">Panel</a></li>
+                      <li><a class="dropdown-item" href="{% url 'asesores' %}">Asesores</a></li>
+                      <li><a class="dropdown-item" href="{% url 'comisiones' %}">Comisiones</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>  
+          </nav>
+          <div id="content">
+            <section class="py-3">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <h1 class="font-weight-bold mb-0">Bienvenido Brodward</h1>
+                    <p class="lead text-muted">Aquí puedes ver los registros de los asesores y las comisiones</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          {% block content %}{% endblock %}
+          </div>                      
+        </div>           
+        <!-- Fin Estructura Navbar -->        
+    </div>
+    <!-- Fin Estructura Sidebar -->   
+    
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'https://code.jquery.com/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'https://kit.fontawesome.com/9b15b98184.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js' %}"></script>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+          'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+          Array.prototype.slice.call(forms)
+              .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                  if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                  }
+
+                  form.classList.add('was-validated')
+              }, false)
+              })}
+      )()
+    </script>  
+</body>
+</html>
+
