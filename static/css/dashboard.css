@@ -1,0 +1,139 @@
+:root {
+  --orange: #FF6D10;
+  --pink: #ef4a59;
+  --green: #058589;
+  --dark-blue: #1f3640;
+  --purple: #69063d;
+  --brown: #88441d;
+  --grey: #353535;
+  --light-grey: #f3f3f3;
+  --white: #ffffff;
+}
+
+body {
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+
+.bg-primary { background-color: var(--orange) !important;}
+.bg-light { background-color: var(--white) !important;}
+.btn-primary { background-color: var(--orange) !important;}
+
+#sidebar-container {
+  min-height: 100vh;
+}
+#sidebar-container .logo {
+  padding: .8rem 1.25rem;
+}
+
+#sidebar-container .menu {
+  width: 18rem;
+}
+
+.btn-buscar {
+  right: 5px;
+}
+
+.foto-perfil {
+  max-width: 35px;
+}
+
+.btn-primary {
+  background: var(--orange);
+  border: none;
+}
+.btn-primary:hover {
+  background: var(--green) !important;
+}
+
+#content {
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 5rem;
+}
+
+.borde-card {
+  border-right: solid .2rem var(--light-grey);
+}
+
+.btn-ver-lista-de-asesores:hover {
+  background: var(--green);
+  border: none;
+}
+
+#formulario-de-registro-asesores {
+  background: var(--light-grey);
+  padding: 1.6rem 1.6rem 
+  0 1.6rem;
+  border-radius: .5rem;
+}
+
+
+/*Estilos sección asesores registrados*/
+
+.icono-eliminar-asesor {
+  color: var(--grey);
+}
+
+.icono-eliminar-asesor:hover {
+  color: var(--pink);
+}
+
+.icono-editar-asesor {
+  color: var(--orange);
+}
+
+.icono-editar-asesor:hover {
+  color: var(--green);
+}
+
+.insignia-de-estado-pendiente {
+  background: var(--dark-blue);
+  padding: .5rem;
+  color: var(--white);
+  border-radius: .2rem;
+  font-size: .8rem;
+  min-width: 6rem;
+  min-height: 2rem;
+}
+
+.insignia-de-estado-pendiente:hover {
+  color: var(--white);
+  background-color: var(--orange);
+}
+
+.insignia-de-estado-pagada {
+  background: var(--green);
+  padding: .5rem;
+  color: var(--white);
+  border-radius: .2rem;
+  font-size: .8rem;
+  min-width: 6rem;
+  min-height: 2rem;
+}
+.insignia-de-estado-pagada:hover {
+  color: var(--white);
+  background-color: var(--orange);
+}
+
+.insignia-de-estado-cancelada {
+  background: var(--pink);
+  padding: .5rem;
+  color: var(--white);
+  border-radius: .2rem;
+  font-size: .8rem;
+  min-width: 6rem;
+  min-height: 2rem;
+}
+.insignia-de-estado-cancelada:hover {
+  color: var(--white);
+  background-color: var(--orange);
+}
+
+
+
+
+
+

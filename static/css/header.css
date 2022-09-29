@@ -1,0 +1,65 @@
+:root {
+  --orange: #FF6D10;
+  --pink: #ef4a59;
+  --green: #058589;
+  --dark-blue: #1f3640;
+  --purple: #69063d;
+  --brown: #88441d;
+  --grey: #353535;
+  --light-grey: #767676;
+  --white: #f7f7f7;
+  
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.container-header {
+  display: grid;
+  width: 90%;
+  max-width: 1400px;
+  min-height: 67px;
+  margin: 1em auto;
+  grid-template-columns: minmax(125px, 135px) 1fr minmax(62px, 90px);
+}
+
+.logo-header {
+  display: flex;
+  align-items: center;
+}
+
+.menu-navegacion {
+  display: flex;
+  margin: 0 1rem;
+  font-size: 1.6rem;
+  align-items: center;
+  justify-content: end;
+}
+
+.menu-navegacion a{
+  text-decoration: none;
+  margin: 0 1rem;
+  color: var(--orange);
+}
+
+.menu-navegacion a:hover {
+  color: var(--green);
+}
+
+.iconos-login-buscar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.icono-buscar-header {
+  margin: 0 1rem 0 0; 
+}

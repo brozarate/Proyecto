@@ -1,0 +1,364 @@
+:root {
+  --orange: #FF6D10;
+  --pink: #ef4a59;
+  --green: #058589;
+  --dark-blue: #1f3640;
+  --purple: #69063d;
+  --brown: #88441d;
+  --grey: #353535;
+  --light-grey: #767676;
+  --white: #f7f7f7;
+  
+}
+
+
+* {
+  margin: 0;
+  /* font-family: 'Montserrat'; */
+  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.container-header {
+  display: grid;
+  width: 90%;
+  max-width: 1400px;
+  min-height: 67px;
+  margin: 1em auto;
+  /* grid-template-columns: minmax(125px, 135px) 1fr minmax(62px, 90px); */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.logo-header {
+  display: flex;
+  align-items: center;
+}
+
+.menu-navegacion {
+  display: flex;
+  margin: 0 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  align-items: center;
+  justify-content: end;
+}
+
+.menu-navegacion a{
+  text-decoration: none;
+  margin: 0 1rem;
+  color: var(--orange);
+}
+
+.menu-navegacion a:hover {
+  color: var(--green);
+}
+
+.iconos-login-buscar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.icono-buscar-header {
+  margin: 0 1rem 0 0; 
+}
+
+
+/*Imagne principal*/
+
+.banner-principal {
+  display: flex;
+  font-size: 1.6rem;
+  min-height: 50rem;
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, .50) 0%, rgba(0,
+  0, 0, .50) 100%), url(../images/Destinos\ y\ viajes\ \(1\).jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.content-banner {
+  width: 90%;
+  max-width: 1400px;
+  margin-top: 26rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-banner {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.description-banner {
+  margin-bottom: 3rem;
+}
+
+.button-banner {
+  background: #ff6d10;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6rem 1.6rem;
+  cursor: pointer;
+  transition: .3s ease all;
+  font-size: 1.6rem;
+}
+
+.button-banner a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.button-banner-2 {
+  background: #ff6d10;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6rem 1.6rem;
+  cursor: pointer;
+  transition: .3s ease all;
+  font-size: 1.6rem;
+  margin-left: 2rem;
+}
+
+.button-banner-2 a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+
+.button-banner:hover {
+  background: #058589;
+  color: var(--white);
+}
+
+.button-banner-2:hover {
+  background: #058589;
+  color: var(--white);
+}
+
+
+
+/*Estilos titulos*/
+.title-content {
+  width: 90%;
+  max-width: 1400px;
+  margin: 5rem auto 1rem auto;
+  font-size: 1.6rem;
+  
+}
+
+.separador {
+  width: 60px;
+  height: 5px;
+  margin-top: 1rem;
+  background: var(--orange);
+}
+
+
+/*Sección 2*/
+
+.container-content {
+  width: 90%;
+  max-width: 1400px;
+  margin: 5rem auto 0 auto;
+  font-size: 1.6rem;
+}
+
+/*Auto fill va a rellenar todas las filas con las columna que pueda poner dentro y va crear columnas implícitas en caso de que quepan*/
+/*auto-fit va a permitir rellenar todo el espacio con las columnas disponibles*/
+.container-articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+
+}
+
+.article img {
+  width: 80px;
+}
+
+.article h3 {
+  margin: 1.6rem 0;
+}
+  
+
+
+
+
+
+
+/*Estilos Tarjetas Destinos*/
+.container-cards-destinos {
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 4rem 0;
+
+  /* Grid */
+  /* display: grid; */
+  /* grid-template-columns: repeat(1, 1fr); */
+  
+}
+
+.cards-destinos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 5fr));
+  gap: 1rem;
+
+
+}
+
+.card{
+  border: none;
+}
+
+.card-img {
+  min-height: 350px;
+  border-radius: 1rem;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+} 
+
+.favorite-icono {
+  width: 3rem;
+  background: var(--white);
+  border-radius: 50%;
+  padding: .3rem;
+  position: absolute;
+  margin: 1rem;
+}
+
+.card-text {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 2rem;
+  margin-top: 1rem;
+}
+
+.card-text strong {
+  line-height: 3rem;
+}
+
+.card-text .terrapuntos {
+  color: var(--green);
+}
+
+
+/*Estilos formulario*/
+
+.title-formulario-registro {
+  width: 90%;
+  max-width: 1400px;
+  margin: 5rem auto 1rem auto;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-formulario-registro h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.container-form-registro {
+  background: #f3f3f3;
+  padding: 2em;
+  border-radius: 10px;
+  font-size: 1.6rem;
+}
+
+.terminos-y-condiciones {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+.terminos-y-condiciones:hover {
+  color: var(--green);
+}
+
+.d-grid .gap-2 {
+  background: var(--orange);
+}
+
+.btn-primary {
+  background: var(--orange) !important;
+  border: none;
+  font-size: 1.6rem;
+}
+
+.btn-primary:hover {
+  background: var(--green) !important;
+} 
+
+footer {
+  background: var(--white);
+  margin-top: 5em;
+  font-size: 1.6rem;
+}
+
+.container-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 5fr));
+  /* grid-template-columns: repeat(4, 1fr); */
+  padding-top: 4em;
+  width: 90%;
+  max-width: 1500px;
+  margin: 1em auto;
+  gap: 2em;
+}
+
+.container-footer h3 {
+  font-weight: 600;
+}
+
+.section-footer {
+  padding: 0;
+}
+
+.section-footer ul {
+  list-style-type: none;
+  padding: 0;
+
+}
+
+.section-footer ul a {
+  text-decoration: none;
+  color: var(--grey);
+}
+
+.section-footer ul a:hover {
+  color: var(--orange);
+  text-decoration:underline;
+}
+
+.section-footer ul li {
+  margin: 20px 0;
+}
+
+.redes-sociales-footer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 90%;
+  max-width: 1500px;
+  margin: 1em auto;
+}
+
+.redes-sociales-footer hr {
+  margin: 10px 0;
+}
+
+.redes-sociales-footer img {
+  height: 45px;
+  width: 45px;
+  margin-bottom: 50px;
+}
+
+
+

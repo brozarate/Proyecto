@@ -1,0 +1,88 @@
+:root {
+  --orange: #FF6D10;
+  --pink: #ef4a59;
+  --green: #058589;
+  --dark-blue: #1f3640;
+  --purple: #69063d;
+  --brown: #88441d;
+  --grey: #353535;
+  --light-grey: #767676;
+  --white: #f7f7f7; 
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+html {
+  font-size: 62.5%;
+}
+
+
+.container-cards-destinos {
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 40px 0;
+
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  
+}
+
+
+.cards-destinos {
+  /* Flexbox */
+  display: flex;
+  gap: 1.6rem;
+  max-inline-size: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  /* Grid */
+  /* display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.6rem; */
+
+
+}
+
+.card{
+  /* display: grid;
+  grid-template-columns: repeat(5 1fr); */
+}
+
+.card-img {
+  min-height: 400px;
+  min-width: 300px;
+  border-radius: 1rem;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+} 
+
+.favorite-icono {
+  width: 30px;
+  background: var(--white);
+  border-radius: 50%;
+  padding: 3px;
+  position: absolute;
+  margin: 1rem;
+}
+
+.card-text {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 2.5rem;
+  margin-top: 1rem;
+}
+
+.card-text .terrapuntos {
+  color: var(--green);
+}
+

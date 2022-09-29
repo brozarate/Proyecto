@@ -1,0 +1,96 @@
+:root {
+  --orange: #FF6D10;
+  --pink: #ef4a59;
+  --green: #058589;
+  --dark-blue: #1f3640;
+  --purple: #69063d;
+  --brown: #88441d;
+  --grey: #353535;
+  --light-grey: #767676;
+  --white: #f7f7f7;
+  
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+html {
+  font-size: 62.5%;
+}
+
+
+/*Imagne principal*/
+
+.banner-principal {
+  display: flex;
+  font-size: 1.6rem;
+  min-height: 50rem;
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, .50) 0%, rgba(0,
+  0, 0, .50) 100%), url(../images/Destinos\ y\ viajes\ \(1\).jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.content-banner {
+  width: 90%;
+  max-width: 1400px;
+  margin-top: 26rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-banner {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.description-banner {
+  margin-bottom: 3rem;
+}
+
+.button-banner {
+  background: #ff6d10;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6rem 1.6rem;
+  cursor: pointer;
+  transition: .3s ease all;
+  font-size: 1.6rem;
+}
+
+.button-banner a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.button-banner-2 {
+  background: #ff6d10;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6rem 1.6rem;
+  cursor: pointer;
+  transition: .3s ease all;
+  font-size: 1.6rem;
+  margin-left: 2rem;
+}
+
+.button-banner-2 a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+
+.button-banner:hover{
+  background: #058589;
+  color: var(--white);
+}
+
+.button-banner-2:hover{
+  background: #058589;
+}

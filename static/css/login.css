@@ -1,0 +1,64 @@
+:root {
+  --orange: #FF6D10;
+  --pink: #ef4a59;
+  --green: #058589;
+  --dark-blue: #1f3640;
+  --purple: #69063d;
+  --brown: #88441d;
+  --grey: #353535;
+  --light-grey: #767676;
+  --white: #f7f7f7;
+}
+
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg-dark-x {background-color: var(----dark-x); }
+
+/*Alto de input*/
+.form-control {
+  min-height: 3.125rem;
+}
+
+.btn-primary {
+  min-height: 3.125rem;
+  background: var(--orange);
+  border: none;
+}
+
+.btn:hover {
+  background: var(--green);
+}
+
+.btn-outline-light {
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  min-height: 3.125rem;
+  margin: 0 .5rem;
+}
+
+.btn-outline-light:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.img-1 {
+  background-image: url(/images/Amazonas\ Colombia\ Brasil\ y\ Peru\ -\ Terratur\ viajes\ \ \(27\).jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.img-2 {
+  background-image: url(/images/Viaja\ a\ Caño\ Cristales\ Con\ Terratur\ Viajes\ \(17\).jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.img-3 {
+  background-image: url(/images/Avistamiento\ De\ Ballenas\ -\ Terratur\ Viajes\ \(17\).jpg);
+  background-size: cover;
+  background-position: center;
+}
